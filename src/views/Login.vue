@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <div class="container">
+    <div class="container border">
       <img src="../assets/images/online-shopping.svg" alt="online-shopping" />
       <div class="seperator"></div>
       <form>
@@ -13,7 +13,7 @@
           <label>Password</label>
           <input type="password" name="password" />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" class="border-button">Login</button>
       </form>
     </div>
   </div>
@@ -34,6 +34,12 @@ export default defineComponent({
   background-color: $main;
   min-height: 100vh;
   padding: 1rem;
+}
+.border {
+  border-radius: 20px;
+}
+.border-button {
+  border-radius: 50px;
 }
 .container {
   background-color: $light-shades;
