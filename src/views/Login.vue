@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <div class="container border">
+    <div class="container">
       <img src="../assets/images/online-shopping.svg" alt="online-shopping" />
       <div class="seperator"></div>
       <form>
@@ -13,7 +13,7 @@
           <label>Password</label>
           <input type="password" name="password" />
         </div>
-        <button type="submit" class="border-button">Login</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   </div>
@@ -35,12 +35,6 @@ export default defineComponent({
   min-height: 100vh;
   padding: 1rem;
 }
-.border {
-  border-radius: 20px;
-}
-.border-button {
-  border-radius: 50px;
-}
 .container {
   background-color: $light-shades;
   box-shadow: 2px 2px 10px rgba($dark-shades, 0.25);
@@ -49,6 +43,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 1rem;
 }
 .container img {
   width: 75%;
@@ -91,6 +86,7 @@ form button {
   outline: none;
   font-size: 1rem;
   border: none;
+  border-radius: 3rem;
   background-color: $main;
   padding: 0.75rem;
   margin-top: 2rem;
