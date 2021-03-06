@@ -3,7 +3,7 @@
     <h1>Products</h1>
     <div class="actions">
       <form>
-        <input type="text" name="search" />
+        <input type="text" name="search" placeholder="Search..." />
         <button type="submit" class="search-btn">
           <i class="fas fa-search"></i>
         </button>
@@ -29,7 +29,9 @@
         <tr>
           <td></td>
           <td>
-            <strong>Total: {{ products.length }}</strong>
+            <small>
+              <strong>Total: {{ products.length }}</strong>
+            </small>
           </td>
           <td></td>
           <td></td>
@@ -136,7 +138,7 @@ table {
       padding: 0.5rem;
     }
     &:nth-child(even) {
-      background-color: rgba($light-accent, 0.12);
+      background-color: rgba($light-accent, 0.2);
     }
     &:last-child {
       background-color: transparent;
@@ -145,6 +147,30 @@ table {
         border-bottom: none;
       }
     }
+  }
+}
+
+// Tablet
+@media (min-width: 640px) {
+  .products {
+    padding: 1rem 4rem;
+  }
+  .actions {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+// Laptop
+@media (min-width: 1024px) {
+  .products {
+    padding: 1rem 6rem;
+  }
+}
+
+// Desktop
+@media (min-width: 1280px) {
+  .products {
+    padding: 1rem 8rem;
   }
 }
 </style>
