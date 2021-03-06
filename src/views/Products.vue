@@ -14,23 +14,37 @@
         <th>Buy price</th>
         <th>Sell price</th>
       </tr>
+      <tr v-for="(product, index) in products" :key="product.key">
+        <td>{{ index + 1 }}</td>
+        <td>{{ product.title }}</td>
+        <td>{{ product.inventory }}</td>
+        <td>{{ product.buyPrice }}</td>
+        <td>{{ product.sellPrice }}</td>
+      </tr>
       <tr>
-        <td>1</td>
-        <td>Michael Kors Men's Slim Runway Stainless Steel Quartz Watch</td>
-        <td>5</td>
-        <td>89</td>
-        <td>118.94</td>
+        Total:
+        {{
+          products.length
+        }}
       </tr>
     </table>
-
-    <p>54 products</p>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapState, mapActions } from "vuex";
 export default defineComponent({
-  name: "Products"
+  name: "Products",
+  computed: {
+    ...mapState(["products"])
+  },
+  methods: {
+    ...mapActions(["fetchProducts"])
+  },
+  created() {
+    this.fetchProducts();
+  }
 });
 </script>
 
