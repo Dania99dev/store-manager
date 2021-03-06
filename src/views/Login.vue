@@ -97,12 +97,14 @@ form button:hover {
   background-color: rgba($main, 0.8);
 }
 
+// Tablet
 @media (min-width: 640px) {
   .login {
     padding: 4rem 8rem;
   }
 }
 
+// Laptop
 @media (min-width: 1024px) {
   .login {
     display: flex;
@@ -126,6 +128,8 @@ form button:hover {
     width: 40%;
   }
 }
+
+// Desktop
 @media (min-width: 1280px) {
   .login {
     padding: 4rem 18rem;
