@@ -31,19 +31,15 @@ export default defineComponent({
 <style lang="scss" scoped>
 @import "../assets/scss/_variables.scss";
 
-// TODO: styling based on "mobile first"
-
 form {
   display: flex;
-  align-items: flex-end;
-  flex-wrap: wrap;
+  flex-direction: column;
   width: 100%;
+  padding: 1rem 0;
   .form-control {
     display: flex;
     flex-direction: column;
-    margin: 1rem;
-    margin-left: 0;
-
+    margin-bottom: 1rem;
     label {
       margin-bottom: 2px;
     }
@@ -62,8 +58,9 @@ form {
   input[type="submit"] {
     border: 1px solid $main;
     background-color: $main;
-    margin-bottom: 1rem;
-    padding: 0.5rem 3rem;
+    margin: 1rem 0;
+    width: 8.75rem;
+    padding: 0.5rem 0;
     border-radius: 0.5rem;
     transition-duration: 0.1s;
     cursor: pointer;

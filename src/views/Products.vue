@@ -88,6 +88,7 @@ export default defineComponent({
     display: flex;
   }
   form input {
+    width: 100%;
     border: 1px solid rgba($dark-shades, 0.2);
     border-right: none;
     border-radius: 0.5rem 0 0 0.5rem;
