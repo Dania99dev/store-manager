@@ -1,33 +1,42 @@
 <template>
   <div class="products">
     <h1>Products</h1>
-    <form>
-      <input type="search" name="search" />
-      <button type="submit"><i class="fas fa-search"></i></button>
-    </form>
-    <button><i class="fas fa-plus"></i> Add product</button>
-    <table>
-      <tr>
-        <th>#</th>
-        <th>Product</th>
-        <th>No.</th>
-        <th>Buy price</th>
-        <th>Sell price</th>
-      </tr>
-      <tr v-for="(product, index) in products" :key="product.key">
-        <td>{{ index + 1 }}</td>
-        <td>{{ product.title }}</td>
-        <td>{{ product.inventory }}</td>
-        <td>{{ product.buyPrice }}$</td>
-        <td>{{ product.sellPrice }}$</td>
-      </tr>
-      <tr>
-        Total:
-        {{
-          products.length
-        }}
-      </tr>
-    </table>
+    <div class="actions">
+      <form>
+        <input type="text" name="search" />
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <button class="add-btn"><i class="fas fa-plus"></i> Add product</button>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <tr>
+          <th>#</th>
+          <th>Product</th>
+          <th>No.</th>
+          <th>Buy price</th>
+          <th>Sell price</th>
+        </tr>
+        <tr v-for="(product, index) in products" :key="product.key">
+          <td>{{ index + 1 }}</td>
+          <td>{{ product.title }}</td>
+          <td>{{ product.inventory }}</td>
+          <td>{{ product.buyPrice }}$</td>
+          <td>{{ product.sellPrice }}$</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <strong>Total: {{ products.length }}</strong>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -50,4 +59,91 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import "../assets/scss/_variables.scss";
+.products {
+  padding: 1rem;
+  min-height: 100vh;
+  background-color: $light-shades;
+}
+.products h1 {
+  color: $main;
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+
+  form,
+  .add-btn {
+    margin: 1rem 0;
+  }
+  form {
+    display: flex;
+  }
+  form input {
+    border: 1px solid rgba($dark-shades, 0.2);
+    border-right: none;
+    border-radius: 0.5rem 0 0 0.5rem;
+    padding: 0.5rem;
+    background-color: transparent;
+    &:focus {
+      border: 1px solid rgba($dark-shades, 0.5);
+      border-right: none;
+      outline: none;
+    }
+  }
+  .add-btn,
+  .search-btn {
+    border: none;
+    background-color: $main;
+    padding: 0.75rem 1rem;
+    transition-duration: 0.1s;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      background-color: rgba($main, 0.8);
+    }
+  }
+  .search-btn {
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+  .add-btn {
+    border-radius: 3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+  }
+}
+.table-wrapper {
+  overflow-x: auto;
+  padding: 0.5rem 0;
+}
+table {
+  min-width: 500px;
+  border-spacing: 0;
+  border: 1px solid rgba($dark-shades, 0.4);
+  border-radius: 0.5rem;
+  tr {
+    th {
+      text-align: left;
+      padding: 0.5rem;
+      border-bottom: 1px solid rgba($dark-shades, 0.4);
+    }
+    td {
+      border-bottom: 1px solid rgba($dark-shades, 0.4);
+      padding: 0.5rem;
+    }
+    &:nth-child(even) {
+      background-color: rgba($light-accent, 0.12);
+    }
+    &:last-child {
+      background-color: transparent;
+      border-bottom: none;
+      td {
+        border-bottom: none;
+      }
+    }
+  }
+}
 </style>
