@@ -10,6 +10,7 @@
       </form>
       <button class="add-btn"><i class="fas fa-plus"></i> Add product</button>
     </div>
+    <AddProduct />
     <div class="table-wrapper">
       <table>
         <tr>
@@ -45,8 +46,14 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapState, mapActions } from "vuex";
+
+import AddProduct from "../components/AddProduct.vue";
+
 export default defineComponent({
   name: "Products",
+  components: {
+    AddProduct
+  },
   computed: {
     ...mapState(["products"])
   },
