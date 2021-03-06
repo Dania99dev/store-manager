@@ -43,7 +43,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 .container img {
   width: 75%;
