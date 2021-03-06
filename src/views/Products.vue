@@ -18,8 +18,8 @@
         <td>{{ index + 1 }}</td>
         <td>{{ product.title }}</td>
         <td>{{ product.inventory }}</td>
-        <td>{{ product.buyPrice }}</td>
-        <td>{{ product.sellPrice }}</td>
+        <td>{{ product.buyPrice }}$</td>
+        <td>{{ product.sellPrice }}$</td>
       </tr>
       <tr>
         Total:
