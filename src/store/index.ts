@@ -5,13 +5,13 @@ export default createStore({
     products: []
   },
   mutations: {
-    setProducts: (state, products) => state.products = products
+    setProducts: (state, products) => (state.products = products)
   },
   actions: {
     async fetchProducts({ commit }) {
-      const res = await fetch("http://localhost:5000/products");
+      const res = await fetch("api/products");
       const data = await res.json();
-      commit('setProducts', data);
+      commit("setProducts", data);
     }
   },
   modules: {}
