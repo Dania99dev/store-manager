@@ -112,7 +112,7 @@ export default defineComponent({
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 40%;
+    width: 8.75rem;
   }
 }
 .table-wrapper {
@@ -124,6 +124,7 @@ table {
   border-spacing: 0;
   border: 1px solid rgba($dark-shades, 0.4);
   border-radius: 0.5rem;
+  width: 100%;
   tr {
     th {
       text-align: left;
