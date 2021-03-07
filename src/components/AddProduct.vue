@@ -72,4 +72,16 @@ form {
     }
   }
 }
+
+// laptop
+@media (min-width: 1024px) {
+  form {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  .form-control {
+    margin: 1rem;
+    margin-left: 0;
+  }
+}
 </style>
