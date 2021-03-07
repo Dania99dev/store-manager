@@ -1,20 +1,20 @@
 <template>
-  <form>
+  <form @submit.prevent="addProduct">
     <div class="form-control">
       <label>Title:</label>
-      <input type="text" name="title" />
+      <input type="text" name="title" v-model="title" />
     </div>
     <div class="form-control">
       <label>Number:</label>
-      <input type="number" name="number" min="1" />
+      <input type="number" name="number" min="1" v-model="number" />
     </div>
     <div class="form-control">
       <label>Buy price:</label>
-      <input type="number" name="buy" min="0" />
+      <input type="number" name="buy" min="0" v-model="buyPrice" />
     </div>
     <div class="form-control">
       <label>Sell price:</label>
-      <input type="number" name="sell" min="0" />
+      <input type="number" name="sell" min="0" v-model="sellPrice" />
     </div>
     <input type="submit" value="Add" />
   </form>
@@ -22,9 +22,34 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapActions } from "vuex";
 
 export default defineComponent({
-  name: "AddProduct"
+  name: "AddProduct",
+  data() {
+    return {
+      title: "",
+      number: null,
+      buyPrice: null,
+      sellPrice: null
+    };
+  },
+  methods: {
+    ...mapActions(["addNewProduct"]),
+    addProduct() {
+      const newProduct = {
+        title: this.title,
+        inventory: this.number,
+        buyPrice: this.buyPrice,
+        sellPrice: this.sellPrice
+      };
+      this.addNewProduct(newProduct);
+      this.title = "";
+      this.number = null;
+      this.buyPrice = null;
+      this.sellPrice = null;
+    }
+  }
 });
 </script>
 
