@@ -56,8 +56,8 @@ form {
     }
   }
   input[type="submit"] {
-    border: 1px solid $main;
-    background-color: $main;
+    border: 1px solid $primary;
+    background-color: $primary;
     margin: 1rem 0;
     width: 8.75rem;
     padding: 0.5rem 0;
@@ -68,7 +68,7 @@ form {
       outline: none;
     }
     &:hover {
-      background-color: rgba($main, 0.8);
+      background-color: rgba($primary, 0.8);
     }
   }
 }

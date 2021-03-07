@@ -103,7 +103,7 @@ export default defineComponent({
   .add-btn,
   .search-btn {
     border: none;
-    background-color: $main;
+    background-color: $primary;
     padding: 0.75rem 1rem;
     transition-duration: 0.1s;
     cursor: pointer;
@@ -111,7 +111,7 @@ export default defineComponent({
       outline: none;
     }
     &:hover {
-      background-color: rgba($main, 0.8);
+      background-color: rgba($primary, 0.8);
     }
   }
   .search-btn {
