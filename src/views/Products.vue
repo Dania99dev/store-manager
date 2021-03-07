@@ -35,17 +35,6 @@
           <td>{{ product.buyPrice }}$</td>
           <td>{{ product.sellPrice }}$</td>
         </tr>
-        <tr>
-          <td></td>
-          <td>
-            <small>
-              <strong>Total: {{ products.length }}</strong>
-            </small>
-          </td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
       </table>
     </div>
   </div>
@@ -121,7 +110,6 @@ export default defineComponent({
     border: none;
     background-color: $primary;
     padding: 0.75rem 1rem;
-    transition-duration: 0.1s;
     cursor: pointer;
     &:focus {
       outline: none;
@@ -177,8 +165,6 @@ table {
       background-color: rgba($light-accent, 0.2);
     }
     &:last-child {
-      background-color: transparent;
-      border-bottom: none;
       td {
         border-bottom: none;
       }

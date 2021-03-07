@@ -91,7 +91,6 @@ form button {
   padding: 0.75rem;
   margin-top: 2rem;
   cursor: pointer;
-  transition-duration: 0.1s;
 }
 form button:hover {
   background-color: rgba($primary, 0.8);

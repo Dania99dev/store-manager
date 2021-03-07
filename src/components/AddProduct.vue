@@ -62,7 +62,6 @@ form {
     width: 8.75rem;
     padding: 0.5rem 0;
     border-radius: 0.5rem;
-    transition-duration: 0.1s;
     cursor: pointer;
     &:focus {
       outline: none;
