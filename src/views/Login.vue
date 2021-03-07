@@ -87,14 +87,14 @@ form button {
   font-size: 1rem;
   border: none;
   border-radius: 3rem;
-  background-color: $main;
+  background-color: $primary;
   padding: 0.75rem;
   margin-top: 2rem;
   cursor: pointer;
   transition-duration: 0.1s;
 }
 form button:hover {
-  background-color: rgba($main, 0.8);
+  background-color: rgba($primary, 0.8);
 }
 
 // Tablet
