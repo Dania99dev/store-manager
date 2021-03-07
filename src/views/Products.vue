@@ -8,9 +8,17 @@
           <i class="fas fa-search"></i>
         </button>
       </form>
-      <button class="add-btn"><i class="fas fa-plus"></i> Add product</button>
+      <button
+        @click="toggleAddFormVisibility"
+        :class="`add-btn ${addFormVisibility ? 'danger' : ''}`"
+      >
+        <i :class="`fas ${addFormVisibility ? 'fa-minus' : 'fa-plus'}`"></i>
+        {{ addFormVisibility ? "Close" : "Add product" }}
+      </button>
     </div>
-    <AddProduct />
+    <div v-if="addFormVisibility">
+      <AddProduct />
+    </div>
     <div class="table-wrapper">
       <table>
         <tr>
@@ -54,11 +62,19 @@ export default defineComponent({
   components: {
     AddProduct
   },
+  data() {
+    return {
+      addFormVisibility: false
+    };
+  },
   computed: {
     ...mapState(["products"])
   },
   methods: {
-    ...mapActions(["fetchProducts"])
+    ...mapActions(["fetchProducts"]),
+    toggleAddFormVisibility() {
+      this.addFormVisibility = !this.addFormVisibility;
+    }
   },
   created() {
     this.fetchProducts();
@@ -120,9 +136,21 @@ export default defineComponent({
   .add-btn {
     border-radius: 3rem;
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    width: 8.75rem;
+    width: fit-content;
+    .fas {
+      margin-right: 5px;
+    }
+  }
+  .danger {
+    background-color: $danger;
+    color: $light-shades;
+    &:hover {
+      background-color: rgba($danger, 0.8);
+    }
+    .fas {
+      color: $light-shades;
+    }
   }
 }
 .table-wrapper {
