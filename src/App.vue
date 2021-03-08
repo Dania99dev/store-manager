@@ -3,16 +3,12 @@
 </template>
 <style lang="scss">
 @import "./assets/scss/_variables.scss";
-@font-face {
-  font-family: Mulish;
-  src: url("./assets/fonts/Mulish-VariableFont_wght.ttf") format("truetype");
-  font-weight: 200 900;
-}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Mulish, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
   color: $dark-shades;
 }
 #app {
