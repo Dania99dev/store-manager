@@ -1,20 +1,8 @@
 import { createStore } from "vuex";
 
-interface Product {
-  id: String;
-  title: String;
-  inventory: Number;
-  buyPrice: Number;
-  sellPrice: Number;
-}
-
-export interface State {
-  products: Array<Product>;
-}
-
-export default createStore<State>({
+export default createStore({
   state: {
-    products: []
+    products: [] as Array<object>
   },
   mutations: {
     setProducts: (state, products) => (state.products = products),
