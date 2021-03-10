@@ -84,9 +84,9 @@ form {
     border: 1px solid $primary;
     background-color: $primary;
     margin: 1rem 0;
-    width: 8.75rem;
-    padding: 0.5rem 0;
-    border-radius: 0.5rem;
+    width: fit-content;
+    padding: 0.5rem 3rem;
+    border-radius: 3rem;
     cursor: pointer;
     &:focus {
       outline: none;
