@@ -2,17 +2,13 @@
   <div class="products">
     <h1>Products</h1>
     <div class="actions">
-      <form>
-        <input
-          type="text"
-          name="search"
-          placeholder="Search..."
-          v-model="text"
-        />
-        <button type="submit" class="search-btn">
-          <i class="fas fa-search"></i>
-        </button>
-      </form>
+      <input
+        type="text"
+        name="search"
+        placeholder="Search..."
+        v-model="text"
+        autocomplete="off"
+      />
       <button
         @click="toggleAddFormVisibility"
         :class="`add-btn ${addFormVisibility ? 'danger' : ''}`"
@@ -96,44 +92,23 @@ export default defineComponent({
 .actions {
   display: flex;
   flex-direction: column;
-
-  form,
-  .add-btn {
-    margin: 1rem 0;
-  }
-  form {
-    display: flex;
-  }
-  form input {
-    width: 100%;
+  padding: 1rem 0;
+  input {
     border: 1px solid rgba($dark-shades, 0.2);
-    border-right: none;
-    border-radius: 0.5rem 0 0 0.5rem;
+    border-radius: 0.5rem;
     padding: 0.5rem;
     background-color: transparent;
+    margin-bottom: 1rem;
     &:focus {
       border: 1px solid rgba($dark-shades, 0.5);
-      border-right: none;
       outline: none;
     }
-  }
-  .add-btn,
-  .search-btn {
-    border: none;
-    background-color: $primary;
-    padding: 0.75rem 1rem;
-    cursor: pointer;
-    &:focus {
-      outline: none;
-    }
-    &:hover {
-      background-color: rgba($primary, 0.8);
-    }
-  }
-  .search-btn {
-    border-radius: 0 0.5rem 0.5rem 0;
   }
   .add-btn {
+    border: 1px solid $primary;
+    background-color: $primary;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
     border-radius: 3rem;
     display: flex;
     align-items: center;
@@ -141,11 +116,20 @@ export default defineComponent({
     .fas {
       margin-right: 5px;
     }
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      border: 1px solid rgba($primary, 0.8);
+      background-color: rgba($primary, 0.8);
+    }
   }
   .danger {
+    border: 1px solid $danger;
     background-color: $danger;
     color: $light-shades;
     &:hover {
+      border: 1px solid rgba($danger, 0.8);
       background-color: rgba($danger, 0.8);
     }
     .fas {
@@ -155,7 +139,7 @@ export default defineComponent({
 }
 .table-wrapper {
   overflow-x: auto;
-  padding: 0.5rem 0;
+  padding: 1rem 0;
 }
 table {
   min-width: 500px;
@@ -167,10 +151,8 @@ table {
     th {
       text-align: left;
       padding: 0.5rem;
-      border-bottom: 1px solid rgba($dark-shades, 0.4);
     }
     td {
-      border-bottom: 1px solid rgba($dark-shades, 0.4);
       padding: 0.5rem;
     }
     &:nth-child(even) {
@@ -192,6 +174,11 @@ table {
   .actions {
     flex-direction: row;
     justify-content: space-between;
+    input {
+      margin-right: 10rem;
+      margin-bottom: 0;
+      flex: 1;
+    }
   }
 }
 // Laptop
@@ -199,12 +186,22 @@ table {
   .products {
     padding: 1rem 6rem;
   }
+  .actions {
+    input {
+      margin-right: 20rem;
+    }
+  }
 }
 
 // Desktop
 @media (min-width: 1280px) {
   .products {
     padding: 1rem 8rem;
+  }
+  .actions {
+    input {
+      margin-right: 40rem;
+    }
   }
 }
 </style>
