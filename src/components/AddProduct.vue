@@ -10,11 +10,25 @@
     </div>
     <div class="form-control">
       <label>Buy price:</label>
-      <input type="number" name="buy" min="0" v-model="buyPrice" required />
+      <input
+        type="number"
+        name="buy"
+        min="0"
+        v-model="buyPrice"
+        step="0.01"
+        required
+      />
     </div>
     <div class="form-control">
       <label>Sell price:</label>
-      <input type="number" name="sell" min="0" v-model="sellPrice" required />
+      <input
+        type="number"
+        name="sell"
+        min="0"
+        v-model="sellPrice"
+        step="0.01"
+        required
+      />
     </div>
     <input type="submit" value="Add" />
   </form>
