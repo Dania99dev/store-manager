@@ -1,12 +1,13 @@
 import { createStore } from "vuex";
+import { Product } from "../types";
 
 export default createStore({
   state: {
-    products: [] as Array<object>
+    products: [] as Array<Product>
   },
   mutations: {
-    setProducts: (state, products) => (state.products = products),
-    addNewProduct: (state, newProduct) => (state.products.push(newProduct))
+    setProducts: (state, products: Array<Product>) => (state.products = products),
+    addNewProduct: (state, newProduct: Product) => (state.products.push(newProduct))
   },
   actions: {
     async fetchProducts({ commit }) {
@@ -14,7 +15,7 @@ export default createStore({
       const data = await res.json();
       commit("setProducts", data);
     },
-    async addNewProduct({commit}, newProduct) {
+    async addNewProduct({commit}, newProduct: Product) {
       const res = await fetch("api/products", {
         method: "POST",
         headers: {

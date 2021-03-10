@@ -53,7 +53,7 @@ export default defineComponent({
   },
   data() {
     return {
-      addFormVisibility: false
+      addFormVisibility: false as boolean
     };
   },
   computed: {

@@ -2,19 +2,19 @@
   <form @submit.prevent="addProduct">
     <div class="form-control">
       <label>Title:</label>
-      <input type="text" name="title" v-model="title" />
+      <input type="text" name="title" v-model="title" required />
     </div>
     <div class="form-control">
       <label>Number:</label>
-      <input type="number" name="number" min="1" v-model="number" />
+      <input type="number" name="number" min="1" v-model="number" required />
     </div>
     <div class="form-control">
       <label>Buy price:</label>
-      <input type="number" name="buy" min="0" v-model="buyPrice" />
+      <input type="number" name="buy" min="0" v-model="buyPrice" required />
     </div>
     <div class="form-control">
       <label>Sell price:</label>
-      <input type="number" name="sell" min="0" v-model="sellPrice" />
+      <input type="number" name="sell" min="0" v-model="sellPrice" required />
     </div>
     <input type="submit" value="Add" />
   </form>
