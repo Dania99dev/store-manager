@@ -3,7 +3,12 @@
     <h1>Products</h1>
     <div class="actions">
       <form>
-        <input type="text" name="search" placeholder="Search..." />
+        <input
+          type="text"
+          name="search"
+          placeholder="Search..."
+          v-model="text"
+        />
         <button type="submit" class="search-btn">
           <i class="fas fa-search"></i>
         </button>
@@ -28,7 +33,7 @@
           <th>Buy price</th>
           <th>Sell price</th>
         </tr>
-        <tr v-for="(product, index) in products" :key="product.key">
+        <tr v-for="(product, index) in filteredProducts" :key="product.key">
           <td>{{ index + 1 }}</td>
           <td>{{ product.title }}</td>
           <td>{{ product.inventory }}</td>
@@ -43,6 +48,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapState, mapActions } from "vuex";
+import { Product } from "../types";
 
 import AddProduct from "../components/AddProduct.vue";
 
@@ -53,11 +59,17 @@ export default defineComponent({
   },
   data() {
     return {
-      addFormVisibility: false as boolean
+      addFormVisibility: false as boolean,
+      text: ""
     };
   },
   computed: {
-    ...mapState(["products"])
+    ...mapState(["products"]),
+    filteredProducts: function(): Array<Product> {
+      return this.products.filter((product: Product) =>
+        product.title.toLowerCase().includes(this.text.toLowerCase())
+      );
+    }
   },
   methods: {
     ...mapActions(["fetchProducts"]),
