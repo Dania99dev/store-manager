@@ -3,9 +3,6 @@
 </template>
 <style lang="scss">
 @import "./assets/scss/_variables.scss";
-html {
-  font-size: 14px;
-}
 * {
   margin: 0;
   padding: 0;
