@@ -20,18 +20,6 @@
     <div v-if="addFormVisibility">
       <AddProduct />
     </div>
-    <div class="modifiers">
-      <input
-        type="button"
-        value="Edit"
-        :class="`edit ${isEditDisabled ? 'disabled' : ''}`"
-      />
-      <input
-        type="button"
-        value="Delete"
-        :class="`delete ${isDeleteDisabled ? 'disabled' : ''}`"
-      />
-    </div>
     <div class="table-wrapper">
       <table>
         <tr>
@@ -41,19 +29,12 @@
           <th>Buy price</th>
           <th>Sell price</th>
         </tr>
-        <tr v-for="(product, index) in filteredProducts" :key="product.id">
+        <tr v-for="(product, index) in filteredProducts" :key="product.key">
           <td>{{ index + 1 }}</td>
           <td>{{ product.title }}</td>
           <td>{{ product.inventory }}</td>
           <td>{{ product.buyPrice }}$</td>
           <td>{{ product.sellPrice }}$</td>
-          <td>
-            <input
-              type="checkbox"
-              :value="product.id"
-              @change="addRemoveProduct"
-            />
-          </td>
         </tr>
       </table>
     </div>
@@ -75,10 +56,7 @@ export default defineComponent({
   data() {
     return {
       addFormVisibility: false as boolean,
-      text: "",
-      selectedProducts: [] as Array<string>,
-      isEditDisabled: true,
-      isDeleteDisabled: true
+      text: ""
     };
   },
   computed: {
@@ -93,28 +71,6 @@ export default defineComponent({
     ...mapActions(["fetchProducts"]),
     toggleAddFormVisibility() {
       this.addFormVisibility = !this.addFormVisibility;
-    },
-    addRemoveProduct(e: any) {
-      const id: string = e.target.value;
-      if (e.target.checked) {
-        this.selectedProducts.push(id);
-      } else {
-        this.selectedProducts.splice(this.selectedProducts.indexOf(id), 1);
-      }
-      console.log(this.selectedProducts.length);
-
-      if (this.selectedProducts.length === 1) {
-        this.isEditDisabled = false;
-        this.isDeleteDisabled = false;
-      }
-      if (this.selectedProducts.length <= 0) {
-        this.isEditDisabled = true;
-        this.isDeleteDisabled = true;
-      }
-      if (this.selectedProducts.length > 1) {
-        this.isEditDisabled = true;
-        this.isDeleteDisabled = false;
-      }
     }
   },
   created() {
@@ -178,45 +134,6 @@ export default defineComponent({
     }
     .fas {
       color: $light-shades;
-    }
-  }
-}
-.modifiers {
-  display: flex;
-  justify-content: flex-end;
-  input {
-    padding: 0.5rem 1rem;
-    margin-left: 1rem;
-    cursor: pointer;
-    border-radius: 3rem;
-    transition-duration: 0.1s;
-    background-color: transparent;
-    outline: none;
-  }
-  .delete {
-    border: 1px solid $danger;
-    color: $danger;
-    &:hover {
-      background-color: $danger;
-      color: $light-shades;
-    }
-  }
-  .edit {
-    border: 1px solid $info;
-    color: $info;
-    &:hover {
-      background-color: $info;
-      color: $light-shades;
-    }
-  }
-  .disabled {
-    border: 1px solid $dark-accent;
-    color: $dark-accent;
-    opacity: 0.5;
-    cursor: not-allowed;
-    &:hover {
-      background-color: transparent;
-      color: $dark-accent;
     }
   }
 }
