@@ -6,12 +6,14 @@
         type="text"
         name="search"
         placeholder="Search..."
-        v-model="text"
+        v-model="searchString"
         autocomplete="off"
       />
       <button
-        @click="toggleAddFormVisibility"
-        :class="`add-btn ${addFormVisibility ? 'danger' : ''}`"
+        @click="addFormVisibility = !addFormVisibility"
+        :class="
+          `form-toggler ${addFormVisibility ? 'form-toggler-active' : ''}`
+        "
       >
         <i :class="`fas ${addFormVisibility ? 'fa-minus' : 'fa-plus'}`"></i>
         {{ addFormVisibility ? "Close" : "Add product" }}
@@ -29,7 +31,7 @@
           <th>Buy price</th>
           <th>Sell price</th>
         </tr>
-        <tr v-for="(product, index) in filteredProducts" :key="product.key">
+        <tr v-for="(product, index) in filteredProducts" :key="product.id">
           <td>{{ index + 1 }}</td>
           <td>{{ product.title }}</td>
           <td>{{ product.inventory }}</td>
@@ -55,23 +57,20 @@ export default defineComponent({
   },
   data() {
     return {
-      addFormVisibility: false as boolean,
-      text: ""
+      addFormVisibility: false,
+      searchString: ""
     };
   },
   computed: {
     ...mapState(["products"]),
     filteredProducts: function(): Array<Product> {
       return this.products.filter((product: Product) =>
-        product.title.toLowerCase().includes(this.text.toLowerCase())
+        product.title.toLowerCase().includes(this.searchString.toLowerCase())
       );
     }
   },
   methods: {
-    ...mapActions(["fetchProducts"]),
-    toggleAddFormVisibility() {
-      this.addFormVisibility = !this.addFormVisibility;
-    }
+    ...mapActions(["fetchProducts"])
   },
   created() {
     this.fetchProducts();
@@ -86,13 +85,13 @@ export default defineComponent({
   min-height: 100vh;
   background-color: $light-shades;
 }
-.products h1 {
+h1 {
   color: $main;
 }
 .actions {
   display: flex;
   flex-direction: column;
-  padding: 1rem 0;
+  margin: 1rem 0;
   input {
     border: 1px solid rgba($dark-shades, 0.2);
     border-radius: 0.5rem;
@@ -104,7 +103,7 @@ export default defineComponent({
       outline: none;
     }
   }
-  .add-btn {
+  .form-toggler {
     border: 1px solid $primary;
     background-color: $primary;
     padding: 0.5rem 1rem;
@@ -124,7 +123,7 @@ export default defineComponent({
       background-color: rgba($primary, 0.8);
     }
   }
-  .danger {
+  .form-toggler-active {
     border: 1px solid $danger;
     background-color: $danger;
     color: $light-shades;
@@ -140,32 +139,28 @@ export default defineComponent({
 .table-wrapper {
   overflow-x: auto;
   padding: 1rem 0;
-}
-table {
-  min-width: 500px;
-  border-spacing: 0;
-  border: 1px solid rgba($dark-shades, 0.4);
-  border-radius: 0.5rem;
-  width: 100%;
-  tr {
-    th {
-      text-align: left;
-      padding: 0.5rem;
-    }
-    td {
-      padding: 0.5rem;
-    }
-    &:nth-child(even) {
-      background-color: rgba($light-accent, 0.2);
-    }
-    &:last-child {
+  table {
+    min-width: 500px;
+    border-spacing: 0;
+    border: 1px solid rgba($dark-shades, 0.4);
+    border-radius: 0.5rem;
+    width: 100%;
+    tr {
+      th {
+        text-align: left;
+        padding: 0.5rem;
+      }
       td {
-        border-bottom: none;
+        padding: 0.5rem;
+      }
+      &:nth-child(even) {
+        background-color: rgba($light-accent, 0.2);
       }
     }
   }
 }
 
+// * Media queries
 // Tablet
 @media (min-width: 640px) {
   .products {
@@ -192,7 +187,6 @@ table {
     }
   }
 }
-
 // Desktop
 @media (min-width: 1280px) {
   .products {
