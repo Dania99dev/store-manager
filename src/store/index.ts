@@ -7,7 +7,8 @@ export default createStore({
   },
   mutations: {
     setProducts: (state, products: Array<Product>) => (state.products = products),
-    addNewProduct: (state, newProduct: Product) => (state.products.push(newProduct))
+    addNewProduct: (state, newProduct: Product) => (state.products.push(newProduct)),
+    deleteProduct: (state, id) => (state.products = state.products.filter(product => product.id !== id))
   },
   actions: {
     async fetchProducts({ commit }) {
@@ -26,6 +27,18 @@ export default createStore({
 
       const data = await res.json();
       commit("addNewProduct", data);
+    },
+    deleteProduct({ commit }, id) {
+      fetch(`api/products/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(() => {
+        commit("deleteProduct", id)
+      })
+      .catch(er => (console.log(er)))
     }
   },
   modules: {}
