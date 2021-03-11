@@ -7,7 +7,7 @@ export default createStore({
   },
   mutations: {
     setProducts: (state, products: Array<Product>) => (state.products = products),
-    addNewProduct: (state, newProduct: Product) => (state.products.push(newProduct)),
+    addProduct: (state, newProduct: Product) => (state.products.push(newProduct)),
     deleteProduct: (state, id) => (state.products = state.products.filter(product => product.id !== id))
   },
   actions: {
@@ -16,7 +16,7 @@ export default createStore({
       const data = await res.json();
       commit("setProducts", data);
     },
-    async addNewProduct({commit}, newProduct: Product) {
+    async addProduct({commit}, newProduct: Product) {
       const res = await fetch("api/products", {
         method: "POST",
         headers: {
@@ -26,7 +26,7 @@ export default createStore({
       });
 
       const data = await res.json();
-      commit("addNewProduct", data);
+      commit("addProduct", data);
     },
     deleteProduct({ commit }, id) {
       fetch(`api/products/${id}`, {

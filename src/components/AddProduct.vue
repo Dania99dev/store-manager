@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="addProduct">
+  <form @submit.prevent="addNewProduct">
     <div class="form-control">
       <label>Title:</label>
       <input type="text" name="title" v-model="title" required />
@@ -49,15 +49,15 @@ export default defineComponent({
     };
   },
   methods: {
-    ...mapActions(["addNewProduct"]),
-    addProduct() {
+    ...mapActions(["addProduct"]),
+    addNewProduct() {
       const newProduct = {
         title: this.title,
         inventory: this.number,
         buyPrice: this.buyPrice,
         sellPrice: this.sellPrice
       };
-      this.addNewProduct(newProduct);
+      this.addProduct(newProduct);
       this.title = "";
       this.number = null;
       this.buyPrice = null;
