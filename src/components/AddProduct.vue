@@ -97,7 +97,6 @@ form {
   input[type="submit"] {
     border: 1px solid $primary;
     background-color: $primary;
-    margin: 1rem 0;
     width: fit-content;
     padding: 0.5rem 3rem;
     border-radius: 3rem;
@@ -116,10 +115,14 @@ form {
   form {
     flex-direction: row;
     align-items: flex-end;
-  }
-  .form-control {
-    margin: 1rem;
-    margin-left: 0;
+    flex-wrap: wrap;
+    .form-control {
+      margin: 0;
+      margin-right: 1rem;
+    }
+    input[type="submit"] {
+      margin-top: 1rem;
+    }
   }
 }
 </style>

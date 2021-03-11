@@ -91,7 +91,7 @@ h1 {
 .actions {
   display: flex;
   flex-direction: column;
-  margin: 1rem 0;
+  padding: 1rem 0;
   input {
     border: 1px solid rgba($dark-shades, 0.2);
     border-radius: 0.5rem;
